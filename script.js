@@ -51,3 +51,20 @@ function rainbow()
         rainbowDiv.addEventListener("pointerover", function() {rainbowDiv.style.backgroundColor = `#${randomColor}`});
     }
 }
+
+function darkeningEffect()
+{
+    let arrCount = [];       
+    for(let i=0;i<publicValue*publicValue;i++)
+    {
+        arrCount[i] = 0;
+    }
+    for(let i=0;i<publicValue*publicValue;i++)
+    {
+        const darkeningDiv = document.querySelector(`.grid-item${i}`);
+        darkeningDiv.addEventListener("pointerover", function() {
+            arrCount[i]++;
+            darkeningDiv.style.backgroundColor = `rgba(0, 0, 0, ${arrCount[i]/10})`;
+        });
+    }
+}
