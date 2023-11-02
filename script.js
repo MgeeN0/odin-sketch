@@ -10,8 +10,21 @@ for(let i=0;i<256;i++)
 
 function squareAmount()
 {
-    let value = prompt("How many squares per side ?");
+    let value;
+    do
+    {
+        value = prompt("How many squares per side ?");
+        if(value>100)
+        {
+            alert("Bro are you trying to crash ur pc ? Type in value lesser than 100 please :)")
+        }
+    }while(value>100);
     container.remove();
+    var lastBody = document.querySelector(".custom-grid")
+    if(lastBody)
+    {
+        lastBody.remove();
+    }
     const body = document.querySelector("body")
     const customContainer = document.createElement("div");
     customContainer.classList.add('custom-grid');
