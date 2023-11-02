@@ -1,9 +1,10 @@
 const container = document.querySelector("#grid");
+let publicValue = 16;
 
 for(let i=0;i<256;i++)
 {
     const square = document.createElement("div");
-    square.classList.add('grid-element');
+    square.classList.add(`grid-item${i}`);
     square.addEventListener("pointerover", function() {square.style.backgroundColor = 'red'});
     container.appendChild(square);
 }
@@ -33,8 +34,20 @@ function squareAmount()
     {
         const customSquare = document.createElement("div");
         customSquare.addEventListener("pointerover", function() {customSquare.style.backgroundColor = 'red'});
+        customSquare.classList.add(`grid-item${i}`);
         customContainer.appendChild(customSquare);
     }
     body.appendChild(customContainer);
+    publicValue = value;
+}
 
+function rainbow()
+{
+    console.log(publicValue);
+    for(let i=0;i<publicValue*publicValue;i++)
+    {
+        const rainbowDiv = document.querySelector(`.grid-item${i}`);
+        const randomColor = Math.floor(Math.random()*16777215).toString(16);
+        rainbowDiv.addEventListener("pointerover", function() {rainbowDiv.style.backgroundColor = `#${randomColor}`});
+    }
 }
